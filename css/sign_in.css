@@ -1,0 +1,26 @@
+.main__sign-in{
+    display: flex;
+    flex-direction: column;
+}
+
+input[type=text], input[type=password], input[type=email]{
+    width: 524px;
+    height: 54px;
+}
+
+input:valid {
+    border: 1px solid greenyellow;
+}
+
+input:invalid {
+    border: 1px solid red;
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+    input[type=text], input[type=password], input[type=email]{
+        width: 209px;
+        height: 40px;
+        margin-right: 7px;
+        font-size: 16px;
+    }
+}
