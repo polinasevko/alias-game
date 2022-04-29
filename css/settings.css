@@ -27,7 +27,7 @@
     height: 54px;
 }
 
-input[type=text].main__input-text{
+.main__input-text{
     width: 356px;
     height: 54px;
     border: 1px solid #CED4DA;
@@ -35,7 +35,7 @@ input[type=text].main__input-text{
     margin-right: 20px;
 }
 
-input[type=submit].main__input-button{
+.main__input-button{
     width: 148px;
     height: 54px;
     font-size: 30px;
@@ -43,8 +43,8 @@ input[type=submit].main__input-button{
     background-color: rgb(153, 119, 123, 0.7);
 }
 
-input[type=submit].main__input-button:hover,
-input[type=submit].main__input-button:focus{
+.main__input-button:hover,
+.main__input-button:focus{
     background-color: rgb(153, 119, 123, 0.9);
 }
 
@@ -53,13 +53,13 @@ input[type=submit].main__input-button:focus{
     justify-content: space-between;
 }
 
-input[type=range].main__slider-input{
+.main__slider-input{
     height: 8px;
     background: #CED4DA;
     appearance: none;
 }
 
-input[type=range].main__slider-input::-webkit-slider-thumb{
+.main__slider-input::-webkit-slider-thumb{
     -webkit-appearance: none;
     width: 20px;
     height: 20px;
@@ -83,8 +83,8 @@ input[type=range].main__slider-input::-webkit-slider-thumb{
         width: 209px;
     }
 
-    .main__commands-text{
-        font-size: 16px;
+    .main__commands-item{
+        font-size: 18px;
     }
 
     .main__add-command-form{
@@ -92,14 +92,14 @@ input[type=range].main__slider-input::-webkit-slider-thumb{
         height: 40px;
     }
 
-    input[type=text].main__input-text{
+    .main__input-text{
         width: 140px;
         height: 40px;
         margin-right: 7px;
         font-size: 16px;
     }
     
-    input[type=submit].main__input-button{
+    .main__input-button{
         width: 62px;
         height: 40px;
         font-size: 20px;
@@ -108,13 +108,13 @@ input[type=range].main__slider-input::-webkit-slider-thumb{
         text-align: center;
     }
 
-    input[type=range].main__slider-input{
+    .main__slider-input{
         height: 5px;
         background: #CED4DA;
         appearance: none;
     }
 
-    input[type=range].main__slider-input::-webkit-slider-thumb{
+    .main__slider-input::-webkit-slider-thumb{
         width: 10px;
         height: 10px;
     }

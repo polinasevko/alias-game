@@ -3,21 +3,21 @@
     flex-direction: column;
 }
 
-input[type=text], input[type=password], input[type=email]{
+.main__sign-form{
     width: 524px;
     height: 54px;
 }
 
-input:valid {
+.main__sign-form:valid {
     border: 1px solid greenyellow;
 }
 
-input:invalid {
+.main__sign-form:invalid {
     border: 1px solid red;
 }
 
 @media screen and (max-aspect-ratio: 1/1) {
-    input[type=text], input[type=password], input[type=email]{
+    .main__sign-form{
         width: 209px;
         height: 40px;
         margin-right: 7px;

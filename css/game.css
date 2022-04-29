@@ -24,6 +24,11 @@
     border: 0;
     background: rgba(255, 255, 255, 0.2);
     margin: 15px;
+    text-align: center;
+}
+
+.main__arrow-pic{
+    padding-left: 1px;
 }
 
 .main__arrow-button:hover,

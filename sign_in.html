@@ -24,7 +24,7 @@
                     <li class="header__item">
                         <a href="sign_in.html" class="header__link">Sign in</a>
                     </li>
-                    <li class="header_item">
+                    <li class="header__item">
                         <a href="sign_up.html" class="header__link">Sign up</a>
                     </li>
                 </ul>
@@ -36,12 +36,10 @@
     <main class="main">
         <div class="main__sign-in">
             <label for="username">Username</label>   
-            <input type="text" placeholder="Username" name="username" required>  
+            <input type="text" placeholder="Username" name="username" class="main__sign-form" required>  
             <label>Password</label>   
-            <input type="password" placeholder="Password" name="password" required>  
-            <button type="submit" id="sign-in-button" class="button">
-                <a href="index.html" class="button-text">Sign in</a>
-            </button>
+            <input type="password" placeholder="Password" name="password" class="main__sign-form" required>  
+            <button type="submit" id="sign-in-button" class="main__button-ref">Sign in</button>
         </div>
     </main>
 
