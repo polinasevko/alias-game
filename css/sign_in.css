@@ -1,0 +1,26 @@
+.main__sign-in{
+    display: flex;
+    flex-direction: column;
+}
+
+.main__sign-form{
+    width: 524px;
+    height: 54px;
+}
+
+.main__sign-form:valid {
+    border: 1px solid greenyellow;
+}
+
+.main__sign-form:invalid {
+    border: 1px solid red;
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+    .main__sign-form{
+        width: 209px;
+        height: 40px;
+        margin-right: 7px;
+        font-size: 16px;
+    }
+}

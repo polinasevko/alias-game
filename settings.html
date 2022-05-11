@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alias</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/settings.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__wrapper">
+            
+            <a href="/" class="header__logo">
+                <h1>Alias</h1>
+            </a>
+
+            <nav class="header__nav">
+                <ul class="header__list">
+                    <li class="header__item">
+                        <a href="sign_in.html" class="header__link">Sign in</a>
+                    </li>
+                    <li class="header__item">
+                        <a href="sign_up.html" class="header__link">Sign up</a>
+                    </li>
+                </ul>
+            </nav>
+            
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="main__settings">
+            <h3>Commands</h3>
+            <ul class="main__commands-list">
+                <li class="main__commands-item">Command one</li>
+                <li class="main__commands-item">Command two</li>
+            </ul>
+
+            <form class="main__add-command-form">
+                <input type="text" class="main__input-text" autocomplete="off" name="item" placeholder="New command">
+                <input type="submit" class="main__input-button" value="Add">
+            </form>
+
+            <div class="main__output">
+                <h3>Number of words:</h3>
+                <output id="outputWordsNumber" class="main__slider-output" name="output-words-number" for="inputWordsCount">60</output>
+            </div>
+            <input id="inputWordsCount" class="main__slider-input" type="range" min="10" max="100" value="60" step="10" name="words" oninput="outputWordsNumber.value=inputWordsCount.value;">
+            
+            <div class="main__output">
+                <h3>Time:</h3>
+                <output id="outputTime" class="main__slider-output" name="output-time" for="inputTime">60</output>
+            </div>
+            <input id="inputTime" class="main__slider-input" type="range" min="10" max="100" value="60" step="10" name="time" oninput="outputTime.value=inputTime.value;">
+            
+            <form method="post" id="select-dictionary">
+                <select class="main__select" required>
+                    <option>Select dictionary</option>
+                    <option value="Classy sassy">Classy sassy</option>
+                </select>
+            </form>
+
+            <a href="game.html" id="game-button" class="main__button-ref">Start</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__wrapper">
+            <address class="footer__address">
+                <p class="footer__text-info">2022 Sevko Polina</p>
+                <a href="https://github.com/polinasevko">
+                    <img src="/img/svg/github-icon.svg" alt="github-icon" class="footer__img">
+                </a>
+            </address>
+        </div>
+    </footer>
+
+</body>
+</html>

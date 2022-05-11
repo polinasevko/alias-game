@@ -1,0 +1,132 @@
+.main__settings{
+    display: flex;
+    flex-direction: column;
+}
+
+.main__commands-list{
+    max-height: 104px;
+    width: 524px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.main__commands-item{
+    height: 52px;
+    background: #FFFFFF;
+    box-shadow: inset 0px -1px 0px #CED4DA;
+    order: 0;
+    align-self: stretch;
+}
+
+.main__add-command-form{
+    display: flex;
+    align-items: center;
+    margin-top: 14px;
+    height: 54px;
+}
+
+.main__input-text{
+    width: 356px;
+    height: 54px;
+    border: 1px solid #CED4DA;
+    background: #FFFFFF;
+    margin-right: 20px;
+}
+
+.main__input-button{
+    width: 148px;
+    height: 54px;
+    font-size: 30px;
+    border: 0;
+    background-color: rgb(153, 119, 123, 0.7);
+}
+
+.main__input-button:hover,
+.main__input-button:focus{
+    background-color: rgb(153, 119, 123, 0.9);
+}
+
+.main__output{
+    display: flex;
+    justify-content: space-between;
+}
+
+.main__slider-input{
+    height: 8px;
+    background: #CED4DA;
+    appearance: none;
+}
+
+.main__slider-input::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 1em;
+    background: #7A8F8C;
+}
+
+.main__slider-output{
+    color: white;
+}
+
+.main__select{
+    width: 524px;
+    height: 54px;
+    margin-top: 11px;
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+    .main__commands-list{
+        max-height: 80px;
+        width: 209px;
+    }
+
+    .main__commands-item{
+        font-size: 16px;
+    }
+
+    .main__add-command-form{
+        margin-top: 4px;
+        height: 40px;
+    }
+
+    .main__input-text{
+        width: 140px;
+        height: 40px;
+        margin-right: 7px;
+        font-size: 16px;
+    }
+    
+    .main__input-button{
+        width: 62px;
+        height: 40px;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 120%;
+        text-align: center;
+    }
+
+    .main__slider-input{
+        height: 5px;
+        background: #CED4DA;
+        appearance: none;
+    }
+
+    .main__slider-input::-webkit-slider-thumb{
+        width: 10px;
+        height: 10px;
+    }
+
+    .main__slider-output{
+        font-size: 16px;
+    }
+    
+    .main__select{
+        width: 209px;
+        height: 42px;
+        margin-top: 11px;
+        font-size: 16px;
+    }
+}
