@@ -7,6 +7,8 @@ import IntermediateStage from "./views/IntermediateStage"
 import Game from "./views/Game"
 import RoundScore from "./views/RoundScore"
 
+import {auth, database} from "./firebase.js"
+
 const router = async () => {
     const routes = [
         { path: "/", view: Start },
@@ -40,6 +42,13 @@ const router = async () => {
     const view = new match.route.view()
 
     document.querySelector("#app").innerHTML = await view.getHtml()
+
+    if(match.route.path === '/sign_up'|| location.pathname === "/sign_up"){
+        document.getElementById('sign-up-button').addEventListener('click', (e) =>{
+            e.preventDefault()
+            view.signUpClick(auth, database)
+            navigateTo('/')})
+    }
 }
 
 const navigateTo = url => {
