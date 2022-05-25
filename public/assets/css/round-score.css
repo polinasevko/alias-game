@@ -32,7 +32,7 @@ th{
 td{
     overflow-wrap: break-word;
     vertical-align: middle;
-    max-width: 253px;
+    width: 253px;
 }
 
 @media screen and (max-aspect-ratio: 1/1) {
@@ -47,5 +47,10 @@ td{
 
     tr{
         height: 40px;
+    }
+
+    td{
+        width: 95px;
+        font-size: 16px;
     }
 }

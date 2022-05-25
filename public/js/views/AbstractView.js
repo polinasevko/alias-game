@@ -8,4 +8,8 @@ export default class AbstractView{
     async handle(){
         return null
     }
+
+    async saveChanges(gameset){
+        sessionStorage.setItem("Gameset", JSON.stringify(gameset))
+    }
 }
