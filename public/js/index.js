@@ -6,6 +6,7 @@ import Settings from "./views/Settings"
 import IntermediateStage from "./views/IntermediateStage"
 import Game from "./views/Game"
 import RoundScore from "./views/RoundScore"
+import {createDicts} from "./Dictionary"
 
 import {auth, database} from "./firebase.js"
 
@@ -43,18 +44,31 @@ const router = async () => {
 
     document.querySelector("#app").innerHTML = await view.getHtml()
 
+    await view.handle()
+
+    console.log("sessionsStorage", sessionStorage)
+
     if(match.route.path === '/sign_up'|| location.pathname === "/sign_up"){
         document.getElementById('sign-up-button').addEventListener('click', (e) =>{
             e.preventDefault()
             view.signUpClick(auth, database)
             navigateTo('/')})
     }
+
+    if(match.route.path === '/sign_in'|| location.pathname === "/sign_in"){
+        document.getElementById('sign-in-button').addEventListener('click', (e) =>{
+            e.preventDefault()
+            view.signInClick(auth)
+            navigateTo('/')})
+    }
 }
 
-const navigateTo = url => {
+export const navigateTo = url => {
     history.pushState(null, null, url)
     router()
 }
+
+await createDicts()
 
 window.addEventListener("popstate", router)
 

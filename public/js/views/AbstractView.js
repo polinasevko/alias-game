@@ -4,4 +4,8 @@ export default class AbstractView{
     async getHtml() {
         return ""
     }
+
+    async handle(){
+        return null
+    }
 }

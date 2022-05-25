@@ -8,16 +8,10 @@ export default class SignUp extends AbstractView{
         super()
     }
 
-    signUpClick(auth, database){
+    async signUpClick(auth, database){
         const username = document.getElementById('username').value;
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-
-        if(!username)
-        {
-            alert("Name can't be empty!")
-            return
-        }
         
         createUserWithEmailAndPassword(auth, email, password).then(() => {
             const user = auth.currentUser
