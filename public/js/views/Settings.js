@@ -1,5 +1,6 @@
 import AbstractView from "./AbstractView"
-import {GameSet, Command} from "../GameSet"
+import {GameSet} from "../models/GameSet"
+import {Command} from "../models/Command"
 import {navigateTo} from "../index"
 
 

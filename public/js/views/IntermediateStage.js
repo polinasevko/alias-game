@@ -39,11 +39,9 @@ export default class IntermediateStage extends AbstractView{
         
         let game_button = document.querySelector('.main__button-ref')
         game_button.addEventListener('click', () => {
-            console.log(gameset.index)
             if (++gameset.index == gameset.commands.length){
                 gameset.index = 0
             }
-            console.log(gameset.index)
             curr_command.guessed = 0
             curr_command.passed = 0
             curr_command.guessedWords = []
