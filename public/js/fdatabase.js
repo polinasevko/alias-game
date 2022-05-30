@@ -4,17 +4,19 @@ ref,
 onValue
 } from "https://www.gstatic.com/firebasejs/9.8.0/firebase-database.js";
 import { auth, database } from "./firebase.js";
-import { User } from "./User.js";
+import { User } from "./models/User.js";
 
 export async function setUser(user) {
     const currUser = auth.currentUser;
     let userRef = ref(database, `users/${currUser.uid}`);
     set(userRef, {
         email: user.email,
-        username: user.username
-    }).catch((error) => {
+        username: user.username,
+        commandsStats: user.commandsStats,
+        }).catch((error) => {
         console.log("Sign Up:", error.message);
     });
+    console.log()
 }
 
 export async function getUser() {
@@ -27,6 +29,7 @@ export async function getUser() {
       localUser.username = data.username;
       localUser.email = data.email;
       localUser.id = user.uid;
-      localStorage.setItem("User", JSON.stringify(localUser));
+      localUser.commandsStats = data.commandsStats;
+      sessionStorage.setItem("User", JSON.stringify(localUser));
     })
 }  

@@ -27,7 +27,6 @@ export default class Game extends AbstractView{
         word.textContent = iter_dict.next().value
         
         let curr_command = gameset.commands[gameset.index]
-        console.log(gameset.commands, curr_command)
 
         up_button.addEventListener('click', async function (e) {
             e.preventDefault()

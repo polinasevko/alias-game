@@ -5,6 +5,26 @@ export default class Stats extends AbstractView{
         super()
     }
 
+    async handle(){
+        let table = document.querySelector(".main__scroll-table")
+        let user = JSON.parse(sessionStorage.getItem("User"))
+        let rows_count = user.commandsStats.length
+        user.commandsStats = Array.from(new Set(user.commandsStats.map(a => a.name))).map(name => {
+          return user.commandsStats.find(a => a.name === name)
+        })
+        sessionStorage.setItem("User", JSON.stringify(user))
+        for (let i = 0; i < rows_count; i++) {
+            let row = document.createElement("tr")
+            let command_cell = document.createElement("td")
+            let score_cell = document.createElement("td")
+            command_cell.innerHTML = user.commandsStats[i.toString()].name
+            score_cell.innerHTML = user.commandsStats[i.toString()].score
+            row.appendChild(command_cell);
+            row.appendChild(score_cell);
+            table.appendChild(row)
+        }
+    }
+
     async getHtml() {
         return  `
         <div class="main__stats">

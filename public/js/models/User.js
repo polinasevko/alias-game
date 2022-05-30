@@ -3,5 +3,6 @@ export class User {
         this.id = '';
         this.username = '';
         this.email = '';
+        this.commandsStats = [];
     }
 }

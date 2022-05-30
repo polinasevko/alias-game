@@ -8,6 +8,7 @@ export default class IntermediateStage extends AbstractView{
     async handle(){
         let gameset = JSON.parse(sessionStorage.getItem("Gameset"))
         let indx = gameset.index
+        let winner = null
         let curr_command = gameset.commands[indx.toString()]
         // Check if command scores enoigh points to end the game
         if(curr_command.score >= gameset.wordNum){
@@ -18,9 +19,13 @@ export default class IntermediateStage extends AbstractView{
         // then finish the game
         if(gameset.endGame && gameset.index === gameset.commands.length - 1){
             let button = document.querySelector(".main__button-ref")
+            let user = JSON.parse(sessionStorage.getItem("User"))
             button.innerHTML = "Finish"
             button.href = "/"
-            // bold the winner //
+            user.commandsStats = user.commandsStats.concat(gameset.commands)         
+            user.commandsStats.sort((a, b) => b.score - a.score)
+            sessionStorage.setItem("User", JSON.stringify(user))
+            winner = user.commandsStats[0]
         }
 
         //Table with commands scores
@@ -30,13 +35,16 @@ export default class IntermediateStage extends AbstractView{
             let row = document.createElement("tr")
             let command_cell = document.createElement("td")
             let score_cell = document.createElement("td")
-            command_cell.innerHTML = gameset.commands[i.toString()].name
-            score_cell.innerHTML = gameset.commands[i.toString()].score
+            command_cell.innerHTML = gameset.commands[i].name
+            score_cell.innerHTML = gameset.commands[i].score
+            if (JSON.stringify(gameset.commands[i]) == JSON.stringify(winner)){
+                command_cell.style.backgroundColor = "#852D44" 
+                score_cell.style.backgroundColor = "#852D44"      
+            }
             row.appendChild(command_cell);
             row.appendChild(score_cell);
             table.appendChild(row)
-        }
-        
+        } 
         let game_button = document.querySelector('.main__button-ref')
         game_button.addEventListener('click', () => {
             if (++gameset.index == gameset.commands.length){

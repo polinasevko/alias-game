@@ -6,11 +6,12 @@ import Settings from "./views/Settings"
 import IntermediateStage from "./views/IntermediateStage"
 import Game from "./views/Game"
 import RoundScore from "./views/RoundScore"
-import {createDicts} from "./Dictionary"
+import {createDicts} from "./models/Dictionary"
+import {auth, database} from "./firebase/firebase.js"
 
-import {auth, database} from "./firebase.js"
 
 const router = async () => {
+
     const routes = [
         { path: "/", view: Start },
         { path: "/sign_in", view: SignIn },
@@ -69,15 +70,15 @@ export const navigateTo = url => {
 }
 
 await createDicts()
-
-window.addEventListener("popstate", router)
+// window.addEventListener("popstate", router)
 
 document.addEventListener("DOMContentLoaded", () => {
-    document.body.addEventListener("click", e => {
-        if (e.target.matches("[data-link]")) {
-            e.preventDefault();
-            navigateTo(e.target.href);
-        }
-    })
     router()
+})
+
+document.body.addEventListener("click", e => {
+    if (e.target.matches("[data-link]")) {
+        e.preventDefault();
+        navigateTo(e.target.href);
+    }
 })

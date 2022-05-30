@@ -19,9 +19,11 @@ export default class SignUp extends AbstractView{
             localUser.email = email;
             localUser.id = user.uid;
             localUser.username = username;
-            localStorage.setItem("User", JSON.stringify(localUser))
+            localUser.commandsStats = [];
+            sessionStorage.setItem("User", JSON.stringify(localUser))
             setUser(localUser)
-    
+            console.log("localUser", localUser)
+            
             setUser(localUser).catch((error) => {
               console.log("Sign Up:", error.message);
             });
