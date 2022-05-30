@@ -1,6 +1,6 @@
 import AbstractView from "./AbstractView"
 import {User} from "../models/User.js";
-import {setUser} from "../fdatabase.js"
+import {setUser} from "../firebase/fdatabase.js"
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.8.0/firebase-auth.js";
 
 export default class SignUp extends AbstractView{

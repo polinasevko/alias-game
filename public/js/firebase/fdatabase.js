@@ -4,7 +4,7 @@ ref,
 onValue
 } from "https://www.gstatic.com/firebasejs/9.8.0/firebase-database.js";
 import { auth, database } from "./firebase.js";
-import { User } from "./models/User.js";
+import { User } from "../models/User.js";
 
 export async function setUser(user) {
     const currUser = auth.currentUser;
@@ -16,7 +16,6 @@ export async function setUser(user) {
         }).catch((error) => {
         console.log("Sign Up:", error.message);
     });
-    console.log()
 }
 
 export async function getUser() {

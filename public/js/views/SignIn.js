@@ -1,5 +1,5 @@
 import AbstractView from "./AbstractView"
-import {getUser} from "../fdatabase.js"
+import {getUser} from "../firebase/fdatabase.js"
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.8.0/firebase-auth.js";
 
 
