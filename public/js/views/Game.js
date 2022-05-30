@@ -22,37 +22,31 @@ export default class Game extends AbstractView{
 
         let dicts = JSON.parse(localStorage.getItem("Dicts"))
         let curr_dict = dicts.find(item => item.name == [gameset.dictionary])
-        let iter_dict = curr_dict.words[Symbol.iterator]()
-        let next_word = null
-        word.textContent = iter_dict.next().value
-        
         let curr_command = gameset.commands[gameset.index]
+
+        let random_word_index = Math.floor(Math.random() * curr_dict.words.length)
+        word.textContent = curr_dict.words[random_word_index]
+        console.log(curr_dict, random_word_index)
+
+
+        let animation = document.querySelector(".main__cylon_eye")
+        animation.style.animationDuration = gameset.time.toString() + "s"
 
         up_button.addEventListener('click', async function (e) {
             e.preventDefault()
+            random_word_index = Math.floor(Math.random() * curr_dict.words.length)
+            word.textContent = curr_dict.words[random_word_index]
             curr_command.guessed++
             curr_command.score++
             curr_command.guessedWords.push(word.textContent)
-            if (!(next_word = iter_dict.next()).done) {
-                word.textContent = next_word.value
-            }
-            else{
-                iter_dict = curr_dict.words[Symbol.iterator]()
-                word.textContent = iter_dict.next().value
-            }
         })
 
         down_button.addEventListener('click', async function (e) {
             e.preventDefault()
+            random_word_index = Math.floor(Math.random() * curr_dict.words.length)
+            word.textContent = curr_dict.words[random_word_index]
             curr_command.passed++
             curr_command.passedWords.push(word.textContent)
-            if (!(next_word = iter_dict.next()).done) {
-                word.textContent = next_word.value
-            }
-            else{
-                iter_dict = curr_dict.words[Symbol.iterator]()
-                word.textContent = iter_dict.next().value
-            }
         })
     }
 

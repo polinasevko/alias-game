@@ -9,6 +9,7 @@ export default class IntermediateStage extends AbstractView{
         let gameset = JSON.parse(sessionStorage.getItem("Gameset"))
         let indx = gameset.index
         let winner = null
+        let winner_score = null 
         let curr_command = gameset.commands[indx.toString()]
         // Check if command scores enoigh points to end the game
         if(curr_command.score >= gameset.wordNum){
@@ -25,7 +26,8 @@ export default class IntermediateStage extends AbstractView{
             user.commandsStats = user.commandsStats.concat(gameset.commands)         
             user.commandsStats.sort((a, b) => b.score - a.score)
             sessionStorage.setItem("User", JSON.stringify(user))
-            winner = user.commandsStats[0]
+            winner_score = Math.max(...gameset.commands.map(obj => obj.score))
+            winner = gameset.commands.find(obj => obj.score === winner_score)
         }
 
         //Table with commands scores
@@ -41,6 +43,7 @@ export default class IntermediateStage extends AbstractView{
                 command_cell.style.backgroundColor = "#852D44" 
                 score_cell.style.backgroundColor = "#852D44"      
             }
+            console.log(winner)
             row.appendChild(command_cell);
             row.appendChild(score_cell);
             table.appendChild(row)
