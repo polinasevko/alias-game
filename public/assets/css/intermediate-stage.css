@@ -58,6 +58,7 @@ td:last-child{
     }
 
     td{
-        max-width: 151px;
+        width: 95px;
+        font-size: 16px;
     }
 }

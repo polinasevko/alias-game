@@ -85,6 +85,7 @@
 
     .main__commands-item{
         font-size: 16px;
+        min-height: 40px;
     }
 
     .main__add-command-form{
