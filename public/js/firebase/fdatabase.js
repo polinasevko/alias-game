@@ -1,7 +1,8 @@
 import {
 set,
 ref,
-onValue
+onValue, 
+update,
 } from "https://www.gstatic.com/firebasejs/9.8.0/firebase-database.js";
 import { auth, database } from "./firebase.js";
 import { User } from "../models/User.js";
@@ -32,3 +33,11 @@ export async function getUser() {
       sessionStorage.setItem("User", JSON.stringify(localUser));
     })
 }  
+
+export async function updateUser() {
+    const localUser = JSON.parse(sessionStorage.getItem("User"))
+    const userRef = ref(database, `users/${localUser.id}`);    
+    update(userRef, {
+        "commandsStats": localUser.commandsStats
+    });
+}

@@ -1,4 +1,5 @@
 import AbstractView from "./AbstractView"
+import { updateUser } from "../firebase/fdatabase"
 
 export default class IntermediateStage extends AbstractView{
     constructor() {
@@ -24,8 +25,10 @@ export default class IntermediateStage extends AbstractView{
             button.innerHTML = "Finish"
             button.href = "/"
             user.commandsStats = user.commandsStats.concat(gameset.commands)         
-            user.commandsStats.sort((a, b) => b.score - a.score)
+            user.commandsStats.sort((a, b) => b.score - a.score)           
             sessionStorage.setItem("User", JSON.stringify(user))
+
+            await updateUser()
             winner_score = Math.max(...gameset.commands.map(obj => obj.score))
             winner = gameset.commands.find(obj => obj.score === winner_score)
         }

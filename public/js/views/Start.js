@@ -5,6 +5,12 @@ export default class Start extends AbstractView{
         super()
     }
 
+    async handle(){
+        if(sessionStorage.length){
+            await this.changeLogout()
+        }
+    }
+
     async getHtml() {
         return  `
         <div class="main__menu">

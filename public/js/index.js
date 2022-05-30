@@ -1,6 +1,7 @@
 import Start from "./views/Start"
 import SignIn from "./views/SignIn"
 import SignUp from "./views/SignUp"
+import Logout from "./views/Logout"
 import Stats from "./views/Stats"
 import Settings from "./views/Settings"
 import IntermediateStage from "./views/IntermediateStage"
@@ -10,8 +11,12 @@ import {createDicts} from "./models/Dictionary"
 import {auth, database} from "./firebase/firebase.js"
 
 
-const router = async () => {
+export const navigateTo = url => {
+    history.pushState(null, null, url)
+    router()
+}
 
+const router = async () => {
     const routes = [
         { path: "/", view: Start },
         { path: "/sign_in", view: SignIn },
@@ -20,7 +25,8 @@ const router = async () => {
         { path: "/settings", view: Settings },
         { path: "/intermediate_stage", view: IntermediateStage },
         { path: "/round_score", view: RoundScore },
-        { path: "/game", view: Game }
+        { path: "/game", view: Game },
+        { path: "/logout", view: Logout}
     ]
 
     // Test each route for potential match
@@ -40,6 +46,11 @@ const router = async () => {
             isMatch: true
         }
     }
+    
+    if(!["/", "/logout", "/sign_in", "/sign_up"].includes(match.route.path) && !sessionStorage.length){
+        alert("You have to login")
+        return
+    }
 
     const view = new match.route.view()
 
@@ -53,32 +64,29 @@ const router = async () => {
         document.getElementById('sign-up-button').addEventListener('click', (e) =>{
             e.preventDefault()
             view.signUpClick(auth, database)
-            navigateTo('/')})
+            navigateTo('/')
+        })
     }
 
     if(match.route.path === '/sign_in'|| location.pathname === "/sign_in"){
         document.getElementById('sign-in-button').addEventListener('click', (e) =>{
             e.preventDefault()
             view.signInClick(auth)
-            navigateTo('/')})
+            navigateTo('/')
+        })
     }
-}
-
-export const navigateTo = url => {
-    history.pushState(null, null, url)
-    router()
 }
 
 await createDicts()
-// window.addEventListener("popstate", router)
+
+window.addEventListener("popstate", router)
 
 document.addEventListener("DOMContentLoaded", () => {
+    document.body.addEventListener("click", e => {
+        if (e.target.matches("[data-link]")) {
+            e.preventDefault();
+            navigateTo(e.target.href);
+        }
+    })
     router()
-})
-
-document.body.addEventListener("click", e => {
-    if (e.target.matches("[data-link]")) {
-        e.preventDefault();
-        navigateTo(e.target.href);
-    }
 })

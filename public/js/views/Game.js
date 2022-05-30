@@ -1,5 +1,5 @@
 import AbstractView from "./AbstractView"
-import { navigateTo } from "../index"
+import { navigateTo } from "../index.js"
 
 export default class Game extends AbstractView{
     constructor() {

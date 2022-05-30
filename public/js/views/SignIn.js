@@ -8,8 +8,7 @@ export default class SignIn extends AbstractView{
         super()
     }
 
-
-    async signInClick(auth){
+    signInClick(auth){
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
@@ -21,6 +20,7 @@ export default class SignIn extends AbstractView{
             console.log("Sign in error:", error.message);
             alert("You are not logged in");
         });
+        this.changeLogout()
     }
 
     async getHtml() {

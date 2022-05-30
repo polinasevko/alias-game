@@ -1,7 +1,7 @@
 import AbstractView from "./AbstractView"
 import {GameSet} from "../models/GameSet"
 import {Command} from "../models/Command"
-import {navigateTo} from "../index"
+import {navigateTo} from "../index.js"
 
 
 export default class Settings extends AbstractView{
@@ -13,19 +13,27 @@ export default class Settings extends AbstractView{
         let gameset = new GameSet()
         let commands_list = document.querySelector(".main__commands-list")
         let new_command_form = document.querySelector(".main__add-command-form")
+        let user = JSON.parse(sessionStorage.getItem("User"))
         new_command_form.addEventListener('submit', async function (e) {
             e.preventDefault()
             let new_command_name = new_command_form.elements['new_command'].value
             let new_command = new Command(new_command_name)
-            let li = document.createElement("li")
-            li.classList.add("main__commands-item")
-            li.appendChild(document.createTextNode(new_command_name));
-            commands_list.appendChild(li)
-            gameset.commands.push(new_command)
+
+            if(gameset.commands.find(obj => obj.name === new_command_name) || user.commandsStats.find(obj => obj.name === new_command_name)){
+                alert("Such team already exists.")
+            }
+            else{
+                let li = document.createElement("li")
+                li.classList.add("main__commands-item")
+                li.appendChild(document.createTextNode(new_command_name));
+                commands_list.appendChild(li)
+                gameset.commands.push(new_command)
+            }
         })
 
         let words_input = document.getElementById('inputWordsCount')
         let words_output = document.getElementById('outputWordsNumber')
+        gameset.wordNum = parseInt(words_input.value)
         words_input.addEventListener('input', async function (e) {
             e.preventDefault()
             words_output.value = words_input.value
@@ -34,6 +42,7 @@ export default class Settings extends AbstractView{
 
         let time_input = document.getElementById('inputTime')
         let time_output = document.getElementById('outputTime')
+        gameset.time = parseInt(time_input.value)
         time_input.addEventListener('input', async function (e) {
             e.preventDefault()
             time_output.value = time_input.value
@@ -49,15 +58,20 @@ export default class Settings extends AbstractView{
             select_dict.appendChild(option)
         }        
 
+        gameset.dictionary = select_dict.value
         select_dict.addEventListener('change', async function (e){
             gameset.dictionary = select_dict.value
-            console.log(gameset)
         })
 
         document.getElementById('game-button').addEventListener('click', (e) =>{
             e.preventDefault()
-            sessionStorage.setItem("Gameset", JSON.stringify(gameset))
-            navigateTo('/game')
+            if (gameset.commands.length < 2){
+                alert("2 teams minimum")
+            }
+            else {
+                sessionStorage.setItem("Gameset", JSON.stringify(gameset))
+                navigateTo('/game')
+            }
         })
     }
 
@@ -87,7 +101,6 @@ export default class Settings extends AbstractView{
         
         <form method="post" id="select-dictionary">
             <select class="main__select" required>
-                <option>Select dictionary</option>
             </select>
         </form>
 

@@ -8,7 +8,7 @@ export default class SignUp extends AbstractView{
         super()
     }
 
-    async signUpClick(auth, database){
+    signUpClick(auth, database){
         const username = document.getElementById('username').value;
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
@@ -28,6 +28,7 @@ export default class SignUp extends AbstractView{
               console.log("Sign Up:", error.message);
             });
         })
+        this.changeLogout()
     }
 
     async getHtml() {
